@@ -150,7 +150,7 @@ function OpenBikeMenu()
             align    = 'center',
             elements = {
                 {label = Config.BikeNames.cruiser .. ' (<span style="color:lightgreen;">'   .. Config.Currency .. ' ' .. Config.Prices.cruiser .. '</span>/<span style="color:lightblue;">Minute</span>)',      value = 'cruiser'},
-				{label = Config.BikeNames.bmx .. ' (<span style="color:lightgreen;">'       .. Config.Currency .. ' ' .. Config.Prices.bmx.. '</span>/<span style="color:lightblue;">Minute</span>)>',          value = 'bmx'},
+				{label = Config.BikeNames.bmx .. ' (<span style="color:lightgreen;">'       .. Config.Currency .. ' ' .. Config.Prices.bmx.. '</span>/<span style="color:lightblue;">Minute</span>)',          value = 'bmx'},
 				{label = Config.BikeNames.fixter .. ' (<span style="color:lightgreen;">'    .. Config.Currency .. ' ' .. Config.Prices.fixter.. '</span>/<span style="color:lightblue;">Minute</span>)',        value = 'fixter'},
 				{label = Config.BikeNames.scorcher .. ' (<span style="color:lightgreen;">'  .. Config.Currency .. ' ' .. Config.Prices.scorcher.. '</span>/<span style="color:lightblue;">Minute</span>)',      value = 'scorcher'},
                 {label = Config.BikeNames.tribike .. ' (<span style="color:lightgreen;">'   .. Config.Currency .. ' ' .. Config.Prices.tribike.. '</span>/<span style="color:lightblue;">Minute</span>)',       value = 'tribike'},
