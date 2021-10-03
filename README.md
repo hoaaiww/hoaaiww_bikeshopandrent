@@ -1,7 +1,7 @@
 <h1 align='center'>Bike-Rental V1.0</a></h1>
 
 ## How it looks like?
-*You can check it [here](google.com)*
+*You can check it [here](https://forum.cfx.re/t/release-arp-bike-rental-advanced-fivem-bike-rental/4767386)*
 ## How is this work?
 
 **You need to go to the places where bikes can be rented and you need to bring money to rent bikes for limited time**
