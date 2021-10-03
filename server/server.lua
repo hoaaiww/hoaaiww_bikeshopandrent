@@ -41,7 +41,7 @@ AddEventHandler('arp_bikerental:getMoney', function(vehicleType, rentalTime)
 		paid = true
 		notification('You ~g~Successfully~s~ rented a(n) ~b~' .. bikeName .. ' for~y~ '..rentalTime..' minute(s) ~s~for: ~g~' .. Config.Currency .. ' ' .. rentalPrice * rentalTime) 
 	else
-		notification('You ~r~do not~s~ have enough money for rent a(n) ~b~' .. bikeName .. '~s~! ~g~' .. Config.Currency .. ' ~y~' .. rentalPrice * rentalTime - playerMoney .. '~s~ ~r~is missing!~s~')
+		notification('You ~r~do not~s~ have enough money! ~g~' .. Config.Currency .. ' ~y~' .. rentalPrice * rentalTime - playerMoney .. '~s~ ~r~is missing!~s~')
 	end
 
 	if paid then
