@@ -1,6 +1,6 @@
 <h1 align='center'>Bike-Rental</a></h1>
 
-## UPDATE 1.4.1 >>
+### UPDATE 1.4.1
 * Fixed the update checking system
 
 ## How it looks like?
