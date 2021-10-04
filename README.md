@@ -3,6 +3,9 @@
 #### UPDATE 1.1.1
 * Fixed the update checking system
 
+#### Working on
+* I'm working on a **Bike-Shop** that can be enabled or disabled in the ```config.lua``` for the server 
+
 ## How it looks like?
 *You can check it [here](https://forum.cfx.re/t/release-arp-bike-rental-advanced-fivem-bike-rental/4767386)*
 ## How is this work?
