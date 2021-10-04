@@ -5,7 +5,6 @@ name 'ARP Bike-Rental'
 description 'Rent a bike to make your way faster to you location!'
 author 'hoaaiww'
 version 'v1.2'
-url 'https://discord.io/AntiQRolePlay'
 
 server_scripts {
   'config.lua',
