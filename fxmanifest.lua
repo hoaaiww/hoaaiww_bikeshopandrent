@@ -4,7 +4,7 @@ game 'gta5'
 name 'ARP Bike-Rental'
 description 'Rent a bike to make your way faster to you location!'
 author 'hoaaiww'
-version 'v1.0'
+version 'v1.1'
 url 'https://discord.io/AntiQRolePlay'
 
 server_scripts {
