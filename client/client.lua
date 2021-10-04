@@ -92,8 +92,8 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1000)
-        counter = true
         if onBike then
+            counter = true
             if timerSeconds <= 59 then
                 timerSeconds = timerSeconds - 1
             elseif timerSeconds == 60 then
@@ -150,9 +150,9 @@ function OpenBikeMenu()
             align    = 'center',
             elements = {
                 {label = Config.BikeNames.cruiser .. ' (<span style="color:lightgreen;">'   .. Config.Currency .. ' ' .. Config.Prices.cruiser .. '</span>/<span style="color:lightblue;">Minute</span>)',      value = 'cruiser'},
-				{label = Config.BikeNames.bmx .. ' (<span style="color:lightgreen;">'       .. Config.Currency .. ' ' .. Config.Prices.bmx.. '</span>/<span style="color:lightblue;">Minute</span>)',          value = 'bmx'},
-				{label = Config.BikeNames.fixter .. ' (<span style="color:lightgreen;">'    .. Config.Currency .. ' ' .. Config.Prices.fixter.. '</span>/<span style="color:lightblue;">Minute</span>)',        value = 'fixter'},
-				{label = Config.BikeNames.scorcher .. ' (<span style="color:lightgreen;">'  .. Config.Currency .. ' ' .. Config.Prices.scorcher.. '</span>/<span style="color:lightblue;">Minute</span>)',      value = 'scorcher'},
+		{label = Config.BikeNames.bmx .. ' (<span style="color:lightgreen;">'       .. Config.Currency .. ' ' .. Config.Prices.bmx.. '</span>/<span style="color:lightblue;">Minute</span>)',          value = 'bmx'},
+		{label = Config.BikeNames.fixter .. ' (<span style="color:lightgreen;">'    .. Config.Currency .. ' ' .. Config.Prices.fixter.. '</span>/<span style="color:lightblue;">Minute</span>)',        value = 'fixter'},
+		{label = Config.BikeNames.scorcher .. ' (<span style="color:lightgreen;">'  .. Config.Currency .. ' ' .. Config.Prices.scorcher.. '</span>/<span style="color:lightblue;">Minute</span>)',      value = 'scorcher'},
                 {label = Config.BikeNames.tribike .. ' (<span style="color:lightgreen;">'   .. Config.Currency .. ' ' .. Config.Prices.tribike.. '</span>/<span style="color:lightblue;">Minute</span>)',       value = 'tribike'},
                 {label = Config.BikeNames.tribike2 .. ' (<span style="color:lightgreen;">'  .. Config.Currency .. ' ' .. Config.Prices.tribike2.. '</span>/<span style="color:lightblue;">Minute</span>)',      value = 'tribike2'},
                 {label = Config.BikeNames.tribike3 .. ' (<span style="color:lightgreen;">'  .. Config.Currency .. ' ' .. Config.Prices.tribike3.. '</span>/<span style="color:lightblue;">Minute</span>)',      value = 'tribike3'},
