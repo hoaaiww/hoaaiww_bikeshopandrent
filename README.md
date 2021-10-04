@@ -1,4 +1,4 @@
-<h1 align='center'>Bike-Rental V1.0</a></h1>
+<h1 align='center'>Bike-Rental V1.1</a></h1>
 
 ## How it looks like?
 *You can check it [here](https://forum.cfx.re/t/release-arp-bike-rental-advanced-fivem-bike-rental/4767386)*
