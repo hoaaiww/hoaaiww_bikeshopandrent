@@ -1,5 +1,8 @@
 <h1 align='center'>Bike-Rental</a></h1>
 
+## UPDATE 1.4.1 >>
+* Fixed the update checking system
+
 ## How it looks like?
 *You can check it [here](https://forum.cfx.re/t/release-arp-bike-rental-advanced-fivem-bike-rental/4767386)*
 ## How is this work?
