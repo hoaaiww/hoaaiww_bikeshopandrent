@@ -57,7 +57,7 @@ Config.BlipAndMarker = {
     markerType      = 21, -- The marker type. - You can find more here: https://docs.fivem.net/docs/game-references/markers/
     markerSize      = { x = 0.4, y = 0.4, z = 0.4}, -- The size of the marker
     markerColour    = { r = 240, g = 203, b = 87, a = 150}, -- The color of the marker
-    maerkerBounce   = false, -- Make the marker bouncing
+    markerBounce   = false, -- Make the marker bouncing
     markerRotate    = true, -- Make the marker rotating 360°
     markerFacing    = false, -- Make the marker always face to you (It works only if the markerRotate is false)
 }
