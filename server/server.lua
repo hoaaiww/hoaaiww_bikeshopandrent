@@ -1,6 +1,6 @@
 ESX 					= nil
 local rentalPrice, bikeName
-local resourceVersion	= 1.1
+local resourceVersion	= 1.1.1
 
 TriggerEvent('esx:getSharedObject', function(obj)
 	ESX = obj
@@ -62,9 +62,9 @@ if Config.checkForUpdates then
 			if err == 200 then
 				local data = json.decode(response)
 				if version ~= data.bikeRentalVersion and tonumber(version) < tonumber(data.bikeRentalVersion) then
-					print("The [^2"..resourceName.."^7] ^1 resource is outdated.\nThe newset version: ^2"..data.bikeRentalVersion.."^7\nInstalled version: ^1"..version.."^7\nGet the latest version here: https://github.com/hoaaiww/arp_bikerental")
+					print("The [^2"..resourceName.."^7] ^1resource is outdated^7.\nLatest version: ^2"..data.bikeRentalVersion.."^7\nInstalled version: ^1"..version.."^7\nGet the latest version here: https://github.com/hoaaiww/arp_bikerental")
 				elseif tonumber(version) > tonumber(data.bikeRentalVersion) then
-					print("The [^2"..resourceName.."^7] resource version seems to be higher then the newset version. Please get the latest here: https://github.com/hoaaiww/arp_bikerental")
+					print("The [^2"..resourceName.."^7] resource version seems to be ^1higher^7 then the latest version. Please get the latest version here: https://github.com/hoaaiww/arp_bikerental")
 				else
 					print("The [^2"..resourceName.."^7] resource is up to date! (^2" .. version .."^7)")
 				end
