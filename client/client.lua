@@ -1,6 +1,6 @@
-ESX                                                                         = nil
-local PlayerData                                                            = {}
-local onBike, timerMinutesEnabled, timerMinutes, timerSeconds, counter      = false, false, nil, nil, false
+ESX                                                                         	   = nil
+local PlayerData                                                             	   = {}
+local onBike, timerMinutesEnabled, timerMinutes, timerSeconds, counter, timer      = false, false, nil, nil, false, 0
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -74,7 +74,11 @@ AddEventHandler('arp_bikerental:getBike', function(vehicleType, rentalTime)
             timerMinutesEnabled = true
         end
         onBike = true
-        Wait(rentalTime * 60000)
+
+        local waiting = timer / 60 * 1000
+        Wait(waiting) -- It needs this if you don't want delay between the counter and the actual renting time
+
+        Wait(timer * 1000)
         onBike = false
         if IsPedInVehicle(player, bike, true) then
             FreezeEntityPosition(bike, true)
@@ -91,9 +95,10 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(1000)
+        counter = true
         if onBike then
-            counter = true
+            timer = timer - 1
+
             if timerSeconds <= 59 then
                 timerSeconds = timerSeconds - 1
             elseif timerSeconds == 60 then
@@ -101,7 +106,7 @@ Citizen.CreateThread(function()
                 timerMinutes = timerMinutes - 1
             end
 
-            if timerMinutesEnabled and timerSeconds == 0 then
+            if timerMinutesEnabled and timerSeconds == -1 then
                 timerSeconds = 59
                 timerMinutes = timerMinutes - 1
             end
@@ -118,7 +123,9 @@ Citizen.CreateThread(function()
                 timerMinutes = nil
             end
 
-            timer = timer - 1
+            Citizen.Wait(1000)
+        else
+            Citizen.Wait(0)
         end
     end
 end)
