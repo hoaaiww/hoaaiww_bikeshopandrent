@@ -1,7 +1,7 @@
 <h1 align='center'>Bike-Rental</a></h1>
 
-#### UPDATE 1.2
-* Fixed the update checking system
+#### UPDATE 1.3
+* Fixed the delay between the actual renting time and the timer
 
 #### Working on
 * I'm working on a **Bike-Shop** that can be enabled or disabled in the ```config.lua``` for the server 
