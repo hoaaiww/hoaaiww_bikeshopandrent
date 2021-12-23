@@ -80,7 +80,7 @@ AddEventHandler('arp_bikerental:getBike', function(vehicleType, rentalTime)
 
         Wait(waiting) -- We need to wait the "delay" between the counter and the actual time of the renting
         Wait(renting)
-
+        
         onBike = false
         if IsPedInVehicle(player, bike, true) then
             FreezeEntityPosition(bike, true)
@@ -91,6 +91,7 @@ AddEventHandler('arp_bikerental:getBike', function(vehicleType, rentalTime)
         else
             notification(Config.NotificationSettings.title, Config.NotificationSettings.subject, Config.NotificationSettings.message, Config.NotificationSettings.icon, Config.NotificationSettings.iconIndex)
             DeleteVehicle(bike)
+            timer = 0
         end
     end)
 end)
