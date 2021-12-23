@@ -75,10 +75,12 @@ AddEventHandler('arp_bikerental:getBike', function(vehicleType, rentalTime)
         end
         onBike = true
 
+        local renting = timer * 1000
         local waiting = timer / 60 * 1000
-        Wait(waiting) -- It needs this if you don't want delay between the counter and the actual renting time
 
-        Wait(timer * 1000)
+        Wait(waiting) -- We need to wait the "delay" between the counter and the actual time of the renting
+        Wait(renting)
+
         onBike = false
         if IsPedInVehicle(player, bike, true) then
             FreezeEntityPosition(bike, true)
@@ -97,8 +99,6 @@ Citizen.CreateThread(function()
     while true do
         counter = true
         if onBike then
-            timer = timer - 1
-
             if timerSeconds <= 59 then
                 timerSeconds = timerSeconds - 1
             elseif timerSeconds == 60 then
