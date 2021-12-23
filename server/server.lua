@@ -1,6 +1,6 @@
 ESX 					= nil
 local rentalPrice, bikeName
-local resourceVersion	= 1.2
+local resourceVersion	= 1.3
 
 TriggerEvent('esx:getSharedObject', function(obj)
 	ESX = obj
