@@ -26,4 +26,4 @@
 
 ## Dependencies
 
-* [ESX](https://github.com/FXServer-ESX/fxserver-es_extended)
+* [ESX](https://github.com/esx-framework/esx-legacy.git)
