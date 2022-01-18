@@ -63,3 +63,4 @@ Config.BlipAndMarker = {
 }
 
 Config.checkForUpdates  = true -- Check for updates? /!\ Recommended
+Config.Version          = '1.4' -- Dont edit!
