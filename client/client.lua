@@ -1,6 +1,6 @@
-ESX                                                                         	   = nil
-local PlayerData                                                             	   = {}
-local onBike, timerMinutesEnabled, timerMinutes, timerSeconds, counter, timer      = false, false, nil, nil, false, 0
+ESX                                                                                 = nil
+local PlayerData                                                                    = {}
+local onBike, timerMinutesEnabled, timerMinutes, timerSeconds, counter, timer       = false, false, 0, 0, false, 0
 
 Citizen.CreateThread(function()
 	while ESX == nil do
