@@ -1,10 +1,10 @@
-fx_version 'adamant'
+fx_version 'cerulean'
 game 'gta5'
 
 name 'ARP Bike-Rental'
 description 'Rent a bike to make your way faster to you location!'
 author 'hoaaiww'
-version 'v1.4'
+version '1.4'
 
 server_scripts {
   'config.lua',
