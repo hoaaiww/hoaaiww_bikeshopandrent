@@ -25,6 +25,7 @@ Config.Prices = { -- The bicycles' price/minute
 }
 
 Config.Currency = '$' -- You can set the currency whatever you want. Ect.: $, € or £
+Config.TypeMoney = 'bank' -- Type of pay
 
 Config.BikeNames = { -- The bicycles' name      - /!\ You can't add here more "vehicle"
     cruiser     = 'Average Bicycle',
