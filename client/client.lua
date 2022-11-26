@@ -1,10 +1,9 @@
-ESX                                                                                 = nil
 local PlayerData                                                                    = {}
 local onBike, timerMinutesEnabled, timerMinutes, timerSeconds, counter, timer       = false, false, 0, 0, false, 0
 
 Citizen.CreateThread(function()
 	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		ESX = exports["es_extended"]:getSharedObject()
 		Citizen.Wait(0)
 		PlayerData = ESX.GetPlayerData()
 	end
