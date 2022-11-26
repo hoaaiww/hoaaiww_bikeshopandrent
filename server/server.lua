@@ -1,16 +1,13 @@
-ESX 					= nil
 local rentalPrice, bikeName 		= nil, nil
 local resourceVersion			= Config.Version
 
-TriggerEvent('esx:getSharedObject', function(obj)
-	ESX = obj
-end)
+ESX = exports["es_extended"]:getSharedObject()
 
 RegisterServerEvent('arp_bikerental:getMoney')
 AddEventHandler('arp_bikerental:getMoney', function(vehicleType, rentalTime)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-	local playerMoney = xPlayer.getMoney()
+	local playerMoney = xPlayer.getAccount(Config.TypeMoney)
 	local paid = false
 
 	if vehicleType == 'cruiser' then
@@ -37,7 +34,7 @@ AddEventHandler('arp_bikerental:getMoney', function(vehicleType, rentalTime)
 	end
 
 	if playerMoney >= rentalPrice * rentalTime then
-		xPlayer.removeMoney(rentalPrice * rentalTime)
+		xPlayer.removeAccountMoney(Config.TypeMoney, (rentalPrice * rentalTime))
 		paid = true
 		notification('You ~g~Successfully~s~ rented a(n) ~b~' .. bikeName .. ' for~y~ '..rentalTime..' minute(s) ~s~for: ~g~' .. Config.Currency .. ' ' .. rentalPrice * rentalTime) 
 	else
