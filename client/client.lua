@@ -141,9 +141,9 @@ Citizen.CreateThread(function()
                 Citizen.Wait(100)
             else
                 if timerMinutesEnabled then
-                    DrawText2D(0.505, 0.95, 1.0,1.0,0.4, "The time left from the rented bike: ~b~" ..timerMinutes.. " minute(s) " ..timerSeconds.. " second(s)", 255, 255, 255, 255)
+                    DrawText2D(0.835, 1.45, 1.0, 1.0, 0.4, "The time left from the rented bike: ~b~" ..timerMinutes.. " minute(s) " ..timerSeconds.. " second(s)", 255, 255, 255, 255)
                 else
-                    DrawText2D(0.505, 0.95, 1.0,1.0,0.4, "The time left from the rented bike: ~b~" ..timerSeconds.. " second(s)", 255, 255, 255, 255)
+                    DrawText2D(0.835, 1.45, 1.0, 1.0, 0.4, "The time left from the rented bike: ~b~" ..timerSeconds.. " second(s)", 255, 255, 255, 255)
                 end
             end
         end
