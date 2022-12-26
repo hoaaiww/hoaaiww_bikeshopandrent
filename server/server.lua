@@ -61,9 +61,9 @@ if Config.checkForUpdates then
 			if err == 200 then
 				local data = json.decode(response)
 				if version ~= data.bikeRentalVersion and tonumber(version) < tonumber(data.bikeRentalVersion) then
-					print("Resource [^2"..resourceName.."^7] is ^1outdated^7.\nLatest version: ^2"..data.bikeRentalVersion.."\n^7Installed version: ^1"..version.."\n^7Get the latest version here: https://github.com/hoaaiww/arp_bikerental")
+					print("Resource [^2"..resourceName.."^7] is ^1outdated^7.\nLatest version: ^2"..data.bikeRentalVersion.."\n^7Installed version: ^1"..version.."\n^7Get the latest version here: https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases")
 				elseif tonumber(version) > tonumber(data.bikeRentalVersion) then
-					print("Resource [^2"..resourceName.."^7] version seems to be ^1higher^7 then the latest version. Please get the latest version here: https://github.com/hoaaiww/arp_bikerental")
+					print("Resource [^2"..resourceName.."^7] version seems to be ^1higher^7 then the latest version. Please get the latest version here: https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases")
 				else
 					print("Resource [^2"..resourceName.."^7] is ^2up to date^7! (^2v" .. version .."^7)")
 				end
