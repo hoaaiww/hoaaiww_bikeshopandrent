@@ -1,12 +1,13 @@
 fx_version 'cerulean'
 game 'gta5'
 
-name 'ARP Bike-Rental'
-description 'Rent a bike to make your way faster to you location!'
+name 'ARP Bicycle rental and shop'
+description 'Rent or buy a bike to make your way faster to you location or just for fun!!'
 author 'hoaaiww'
-version '1.4'
+version '2.0'
 
 server_scripts {
+  '@oxmysql/lib/MySQL.lua',
   'config.lua',
   'server/server.lua'
 }
@@ -14,4 +15,19 @@ server_scripts {
 client_scripts {
   'config.lua',
   'client/client.lua'
+}
+
+files {
+  'html/css.css',
+  'html/js.js',
+  'html/imgs/*.png',
+  'html/ui.html'
+}
+
+ui_page 'html/ui.html'
+
+dependencies {
+  'oxmysql',
+  'es_extended',
+  'esx_vehicleshop'
 }
