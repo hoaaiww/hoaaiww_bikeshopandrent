@@ -1,4 +1,4 @@
-<h1 align='center'>Bike-Rental</a></h1>
+<h1 align='center'>Bike Shop and Rental</a></h1>
 
 #### UPDATE 2.0
 * Fully updated and fixed the whole script
@@ -16,7 +16,7 @@
 
 ## How to install
 
-* Git [hoaaiww_bikeshopandrent](https://github.com/hoaaiww/hoaaiww_bikeshopandrent)
+* Git [hoaaiww_bikeshopandrent](https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases)
 * Extract ```hoaaiww_bikeshopandrent-main.rar```
 * Remove ```-main``` from ```hoaaiww_bikeshopandrent```
 * Copy and paste ```hoaaiww_bikeshopandrent``` folder to ```resources```
@@ -28,6 +28,6 @@
 
 ## Dependencies
 
-* [oxmysql]
+* [oxmysql](https://github.com/overextended/oxmysql) - If you use MySQL_Async then change '@oxmysql' to '@MySQL_Async' in `fx_manifest.lua`
 * [ESX](https://github.com/esx-framework/esx-legacy.git)
-* [esx_vehicleshop]()
+* [esx_vehicleshop](https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_vehicleshop)
