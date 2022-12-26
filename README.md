@@ -1,10 +1,12 @@
 <h1 align='center'>Bike-Rental</a></h1>
 
-#### UPDATE 1.4
-* Fixed the timer `-1` state
+#### UPDATE 2.0
+* Fully updated and fixed the whole script
+* Added bicycle shop
+* Added a designed UI for the bicycle shop and rent
 
 #### Working on
-* I'm working on a **Bike-Shop** that can be enabled or disabled in the ```config.lua``` for the server 
+* *nothing yet*
 
 ## How it looks like?
 *You can check it [here](https://forum.cfx.re/t/release-arp-bike-rental-advanced-fivem-bike-rental/4767386)*
@@ -14,11 +16,11 @@
 
 ## How to install
 
-* Git [arp_bikerental](https://github.com/hoaaiww/arp_me_do_try)
-* Extract ```arp_bikerental-main.rar```
-* Remove ```-main``` from ```arp_bikerental```
-* Copy and paste ```arp_bikerental``` folder to ```resources```
-* Add ```start arp_bikerental``` to your ```server.cfg``` file
+* Git [hoaaiww_bikeshopandrent](https://github.com/hoaaiww/hoaaiww_bikeshopandrent)
+* Extract ```hoaaiww_bikeshopandrent-main.rar```
+* Remove ```-main``` from ```hoaaiww_bikeshopandrent```
+* Copy and paste ```hoaaiww_bikeshopandrent``` folder to ```resources```
+* Add ```ensure hoaaiww_bikeshopandrent``` to your ```server.cfg``` file
 
 ## Customizable script!
 
@@ -26,4 +28,6 @@
 
 ## Dependencies
 
+* [oxmysql]
 * [ESX](https://github.com/esx-framework/esx-legacy.git)
+* [esx_vehicleshop]()
