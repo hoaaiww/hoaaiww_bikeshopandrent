@@ -1,0 +1,257 @@
+html, body {
+    background: none;
+    overflow: hidden;
+    user-select: none;
+    width: 100%; height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::-webkit-scrollbar { width: 15px;}
+::-webkit-scrollbar-track {background: #414141; }
+::-webkit-scrollbar-thumb {background: rgb(145, 145, 145); }
+::-webkit-scrollbar-thumb:hover {background: rgb(105, 105, 105); }
+
+.mainbox {
+    position: relative;
+    display: none;
+    width: 65%; height: 80%;
+    border: 3px solid black; 
+    border-radius: 25px;
+	background-image: repeating-linear-gradient(to right, rgba(0,5,15,.95), rgba(45, 50, 55, 0.95));
+	background-position: 100% 100%;
+	background-size: 200% 200%;
+    animation: colorGradient 10s ease-in-out infinite;
+    overflow: hidden;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px black;
+}
+
+@keyframes colorGradient { 
+	0%   { background-position: 0%   50% }
+	50%  { background-position: 100% 50% }
+	100% { background-position: 0%   50% }
+}
+
+.title {
+    position: relative;
+    display: flex;
+    height: 7.5%; width: 100%;
+    align-items: center; 
+    justify-content: center;
+    border-bottom: 2px black solid;
+    color: white;
+    font-size: 21px;
+}
+
+.close {
+    position: absolute;
+    display: flex;
+    top: 0; right: 0;
+    width: 5%; height: 100%;
+    border-left: 2px black solid;
+    background-color: rgb(196, 0, 0);
+    justify-content: center;
+    align-items: center;
+    transition: all .2s;
+}
+
+.close:hover {
+    cursor: pointer;
+    background-color: rgb(129, 1, 1);
+}
+
+.containerBox {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-height: 92.5%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+  
+#containments_rent, #containments_shop {
+    display: none;
+    padding: 20px 0;
+    position: relative;
+}
+
+.card {
+    background-color: rgba(0,5,15,.5);
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.card img {
+    height: 50%;
+    -webkit-mask-image: linear-gradient(black, transparent);
+    mask-image: linear-gradient(black, transparent);
+}
+
+.components {
+    position: relative;
+    display: block;
+    height: 50%; width: 100%;
+    padding: 2.5% 5%;
+    color: rgb(180, 180, 180);
+    font-size: 12px;
+}
+
+.components .bikeName { font-size: 21px; }
+
+.bikePrice {
+    background: radial-gradient(white, transparent 75%);
+    border-radius: 15px;
+    padding: 10px 15px;
+    color: rgb(91, 161, 63);
+    font-weight: 600;
+    text-shadow: 1px 1px black;
+    font-size: 14px;
+    position: absolute;
+    left: 1%; top: 1%;
+    animation: inAndOut .5s infinite alternate;
+}
+
+@keyframes inAndOut {
+    from { transform: scale(1.0);}
+    to   { transform: scale(1.15);}
+}
+
+.colorCont {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.colors {
+    margin: 10px 0 5px 0;
+    display: block;
+}
+
+.colors .row { margin-top: 5px; height: fit-content; }
+
+.colors input { 
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: relative;
+    display: flex;
+    height: 25px; width: 25px;
+    border-radius: 50%;
+    border: 1px rgba(255,255,255,0.25) solid;
+    transition: all .2s;
+    background: white;
+    background-repeat: no-repeat;
+}
+
+.colorCont input[value=black] ~ .checkmark { background-color: black; }
+.colorCont input[value=white] ~ .checkmark { background-color: white; }
+.colorCont input[value=red] ~ .checkmark { background-color: red; }
+.colorCont input[value=blue] ~ .checkmark { background-color: blue; }
+.colorCont input[value=green] ~ .checkmark { background-color: green; }
+.colorCont input[value=yellow] ~ .checkmark { background-color: yellow; }
+.colorCont input[value=tribike] ~ .checkmark { background-image: linear-gradient(135deg, #d4de23 49.9%, white 50%); }
+.colorCont input[value=tribike2] ~ .checkmark { background-image: linear-gradient(135deg, white 49.9%, #e12c3e 50%); }
+.colorCont input[value=tribike3] ~ .checkmark { background-image: linear-gradient(135deg, #078abe 49.9%, white 50%); }
+
+.colorCont:hover input ~ .checkmark { transform: scale(1.2); }
+
+.checkmark {
+    background-size: 150% 150%;
+    background-position: center center;
+}
+  
+.checkmark:after {
+    position: absolute;
+    display: none;
+}
+
+.colorCont input:checked ~ .checkmark:after {
+    display: flex;
+    width: 100%; height: 100%;
+    content: "\2713";
+    font-size: 15px;
+    color: rgb(204, 204, 204);
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px black;
+    top: 2px;
+}
+
+.rentButtonCont, .buyButtonCont {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.buyButtonCont { justify-content: center; }
+
+.rentMinutesCont {
+    position: absolute;
+    left: 0; top: 25px;
+}
+
+.rentMinutesCont button {
+    outline: none;
+    border-radius: 100%; border: none;
+    transition: all .2s;
+}
+
+.rentMinutesCont button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.rentMinutesCont .counterText {
+    background-color: white;
+    font-family: ZenDots;
+    padding: 2px 5px;
+    width: 30px;
+    outline: none;
+    text-align: center;
+    border-radius: 5px; border: none;
+}
+
+.minus  { background-color: rgb(224, 69, 69); }
+.add    { background-color: rgb(102, 255, 102);}
+
+.rentButton, .buyButton {
+    position: absolute;
+    padding: 5px 15px;
+    text-shadow: 1px 1px black;
+    border: 2px solid white;
+    border-radius: 25px;
+    transition: all .2s;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    color: white;
+}
+
+.rentButton {
+    right: 0; top: 20px;
+}
+
+.buyButton {
+    top: 15px;
+}
+
+.rentButton:hover, .buyButton:hover {
+    transform: scale(1.15);
+    border: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px white;
+    color: black;
+    cursor: pointer;
+}
