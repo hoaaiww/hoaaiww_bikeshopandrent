@@ -1,60 +1,59 @@
-ESX 					= nil
-local rentalPrice, bikeName 		= nil, nil
-local resourceVersion			= Config.Version
+ESX 					    = nil
+local rentalPrice, bikeName = nil, nil
 
-TriggerEvent('esx:getSharedObject', function(obj)
-	ESX = obj
-end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-RegisterServerEvent('arp_bikerental:getMoney')
-AddEventHandler('arp_bikerental:getMoney', function(vehicleType, rentalTime)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
+RegisterServerEvent('hoaaiww_bikeshopandrent:checkMoney')
+AddEventHandler('hoaaiww_bikeshopandrent:checkMoney', function(details)
+	local xPlayer = ESX.GetPlayerFromId(source)
 	local playerMoney = xPlayer.getMoney()
+	local price = Config.Bicycles[details.bike].buyPrice
 	local paid = false
 
-	if vehicleType == 'cruiser' then
-		rentalPrice = Config.Prices.cruiser
-		bikeName = Config.BikeNames.cruiser
-	elseif vehicleType == 'bmx' then
-		rentalPrice = Config.Prices.bmx
-		bikeName = Config.BikeNames.bmx
-	elseif vehicleType == 'fixter' then
-		rentalPrice = Config.Prices.fixter
-		bikeName = Config.BikeNames.fixter
-	elseif vehicleType == 'scorcher' then
-		rentalPrice = Config.Prices.scorcher
-		bikeName = Config.BikeNames.scorcher
-	elseif vehicleType == 'tribike' then
-		rentalPrice = Config.Prices.tribike
-		bikeName = Config.BikeNames.tribike
-	elseif vehicleType == 'tribike2' then
-		rentalPrice = Config.Prices.tribike2
-		bikeName = Config.BikeNames.tribike2
-	elseif vehicleType == 'tribike3' then
-		rentalPrice = Config.Prices.tribike3
-		bikeName = Config.BikeNames.tribike3
-	end
+	if details.renting then price = (Config.Bicycles[details.bike].rentPrice * details.rentTime) end
 
-	if playerMoney >= rentalPrice * rentalTime then
-		xPlayer.removeMoney(rentalPrice * rentalTime)
+	if playerMoney >= price then
+		xPlayer.removeMoney(price)
 		paid = true
-		notification('You ~g~Successfully~s~ rented a(n) ~b~' .. bikeName .. ' for~y~ '..rentalTime..' minute(s) ~s~for: ~g~' .. Config.Currency .. ' ' .. rentalPrice * rentalTime) 
-	else
-		notification('You ~r~do not~s~ have enough money! ~g~' .. Config.Currency .. ' ~y~' .. rentalPrice * rentalTime - playerMoney .. '~s~ ~r~is missing!~s~')
 	end
 
 	if paid then
-		TriggerClientEvent('arp_bikerental:getBike', source, vehicleType, rentalTime)
+		if details.renting then
+			TriggerClientEvent('hoaaiww_bikeshopandrent:rentBike', source, details.bike, details.color, details.rentTime)
+		else
+			TriggerClientEvent('hoaaiww_bikeshopandrent:buyBike', source, details.bike, details.color)
+		end
+	else
+		local missingMoney = (Config.CurrencyPlacement ~= 'after' and Config.Currency or '') .. math.floor(price - playerMoney) .. (Config.CurrencyPlacement == 'after' and Config.Currency or '')
+		TriggerClientEvent('esx:showNotification', source, 'You ~r~do not~s~ have enough money to '..(details.renting and 'rent' or 'buy')..' this bicycle. You need ~y~' .. missingMoney ..'~s~ more' .. (details.renting and (' for ' .. details.rentTime .. ' minute(s)')) .. '.')
 	end
 end)
 
-function notification(text)
-	TriggerClientEvent('esx:showNotification', source, text)
-end
+RegisterServerEvent('hoaaiww_bikeshopandrent:leaveBicycle')
+AddEventHandler('hoaaiww_bikeshopandrent:leaveBicycle', function(bike)
+	TriggerClientEvent('hoaaiww_bikeshopandrent:leaveBicycle_c', -1, bike)
+end)
+
+RegisterServerEvent('hoaaiww_bikeshopandrent:storeBikeDatabase')
+AddEventHandler('hoaaiww_bikeshopandrent:storeBikeDatabase', function(bikeData)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	MySQL.Async.execute('INSERT INTO owned_vehicles (owner, vehicle, plate, type, job, `stored`) VALUES (@owner, @vehicle, @plate, @type, @job, @stored)', {
+		['@owner']   = xPlayer.identifier,
+		['@vehicle'] = json.encode(bikeData),
+		['@plate']   = bikeData.plate,
+		['@type']    = 'car',
+		['@job']     = 'civ',
+		['@stored']  = true
+	}, function (rowsChanged)
+		if rowsChanged == 0 then
+			print((GetCurrentResourceName() .. ': Couldn\'t store %s bike in the database!'):format(xPlayer.identifier))
+		end
+	end)
+end)
 
 if Config.checkForUpdates then
-	local version = resourceVersion
+	local version = Config.Version
 	local resourceName = GetCurrentResourceName()
 	
 	Citizen.CreateThread(function()
@@ -62,11 +61,11 @@ if Config.checkForUpdates then
 			if err == 200 then
 				local data = json.decode(response)
 				if version ~= data.bikeRentalVersion and tonumber(version) < tonumber(data.bikeRentalVersion) then
-					print("The [^2"..resourceName.."^7] resource is ^1outdated^7.\nLatest version: ^2"..data.bikeRentalVersion.."\n^7Installed version: ^1"..version.."\n^7Get the latest version here: https://github.com/hoaaiww/arp_bikerental")
+					print("Resource [^2"..resourceName.."^7] is ^1outdated^7.\nLatest version: ^2"..data.bikeRentalVersion.."\n^7Installed version: ^1"..version.."\n^7Get the latest version here: https://github.com/hoaaiww/arp_bikerental")
 				elseif tonumber(version) > tonumber(data.bikeRentalVersion) then
-					print("The [^2"..resourceName.."^7] resource version seems to be ^1higher^7 then the latest version. Please get the latest version here: https://github.com/hoaaiww/arp_bikerental")
+					print("Resource [^2"..resourceName.."^7] version seems to be ^1higher^7 then the latest version. Please get the latest version here: https://github.com/hoaaiww/arp_bikerental")
 				else
-					print("The [^2"..resourceName.."^7] resource is ^2up to date^7! (^2v" .. version .."^7)")
+					print("Resource [^2"..resourceName.."^7] is ^2up to date^7! (^2v" .. version .."^7)")
 				end
 			else
 				print("^1Version Check Error!^7 HTTP Error Code: "..err)
