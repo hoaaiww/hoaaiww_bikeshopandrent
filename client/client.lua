@@ -16,22 +16,9 @@ colorCodes = {
 }
 
 Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) 
+    while ESX == nil do
+	TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) 
         Wait(0)
-	end
-
-    for k,v in pairs(Config.Bicycles) do
-        SendNUIMessage({ 
-            type = 'setList',
-            currency  = Config.Currency,
-            CP        = Config.CurrencyPlacement,
-            bikeId    = k,
-            bikeName  = v.name,
-            rentPrice = v.rentPrice,
-            buyPrice  = v.buyPrice,
-            bikePrice = v.buyPrice
-        })
     end
 end)
 
@@ -51,8 +38,7 @@ Citizen.CreateThread(function()
                             ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to ~b~rent~s~ a ~y~Bicycle~s~')
                             
                             if IsControlJustPressed(0, 38) then
-                                SetNuiFocus(true, true)
-                                SendNUIMessage({ type = 'openRentMenu' })
+                                openMenu(true)
                             end			
                         end
                     end
@@ -66,8 +52,7 @@ Citizen.CreateThread(function()
             ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to ~b~visit~s~ the ~y~Bicycle Shop~s~')
             
             if IsControlJustPressed(0, 38) then
-                SetNuiFocus(true, true)
-                SendNUIMessage({ type = 'openShopMenu' })
+                openMenu(true)
             end			
         end
         Wait(0)
@@ -193,6 +178,28 @@ Citizen.CreateThread(function()
         AddTextEntry(k, v.name) -- Sets the bike's name ingame (like in garages, ect..)
     end
 end)
+
+function openMenu(isShop)
+    for k,v in pairs(Config.Bicycles) do
+        SendNUIMessage({ 
+            type = 'setList',
+            currency  = Config.Currency,
+            CP        = Config.CurrencyPlacement,
+            bikeId    = k,
+            bikeName  = v.name,
+            rentPrice = v.rentPrice,
+            buyPrice  = v.buyPrice,
+            bikePrice = v.buyPrice
+        })
+    end
+
+    if isShop then
+        SendNUIMessage({ type = 'openShopMenu' })
+    else 
+        SendNUIMessage({ type = 'openRentMenu' })
+    end
+    SetNuiFocus(true, true)
+end
 
 function SendAdvancedMessage(subject, msg)
     PlaySoundFrontend(-1, 'Menu_Accept', 'Phone_SoundSet_Default')
