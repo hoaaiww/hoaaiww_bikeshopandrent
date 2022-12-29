@@ -4,7 +4,7 @@ game 'gta5'
 name 'ARP Bicycle rental and shop'
 description 'Rent or buy a bike to make your way faster to you location or just for fun!!'
 author 'hoaaiww'
-version '2.0'
+version '2.1'
 
 server_scripts {
   '@oxmysql/lib/MySQL.lua',
