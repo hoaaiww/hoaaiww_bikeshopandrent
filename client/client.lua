@@ -22,6 +22,22 @@ Citizen.CreateThread(function()
     end
 end)
 
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(playerData)
+    for k,v in pairs(Config.Bicycles) do
+        SendNUIMessage({ 
+            type = 'setList',
+            currency  = Config.Currency,
+            CP        = Config.CurrencyPlacement,
+            bikeId    = k,
+            bikeName  = v.name,
+            rentPrice = v.rentPrice,
+            buyPrice  = v.buyPrice,
+            bikePrice = v.buyPrice
+        })
+    end
+end)
+
 Citizen.CreateThread(function()
     while true do
         local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
@@ -180,19 +196,6 @@ Citizen.CreateThread(function()
 end)
 
 function openMenu(isShop)
-    for k,v in pairs(Config.Bicycles) do
-        SendNUIMessage({ 
-            type = 'setList',
-            currency  = Config.Currency,
-            CP        = Config.CurrencyPlacement,
-            bikeId    = k,
-            bikeName  = v.name,
-            rentPrice = v.rentPrice,
-            buyPrice  = v.buyPrice,
-            bikePrice = v.buyPrice
-        })
-    end
-
     if isShop then
         SendNUIMessage({ type = 'openShopMenu' })
     else 
