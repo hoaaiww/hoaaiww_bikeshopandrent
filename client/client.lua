@@ -130,7 +130,7 @@ AddEventHandler('hoaaiww_bikeshopandrent:buyBike', function(bicycleType, color)
     local player = GetPlayerPed(-1)
     local playerCoords = GetEntityCoords(player, false)
     local playerHeading = GetEntityHeading(player, false)
-    local newPlate = exports['autoshop']:GeneratePlate()
+    local newPlate = exports['esx_vehicleshop']:GeneratePlate()
 
     ESX.Game.SpawnVehicle(GetHashKey(bicycleType), playerCoords, playerHeading, function(bike)
         if color ~= '' then SetVehicleCustomPrimaryColour(bike, colorCodes[color].r, colorCodes[color].g, colorCodes[color].b) end
