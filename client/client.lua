@@ -38,7 +38,7 @@ Citizen.CreateThread(function()
                             ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to ~b~rent~s~ a ~y~Bicycle~s~')
                             
                             if IsControlJustPressed(0, 38) then
-                                openMenu(true)
+                                openMenu(false)
                             end			
                         end
                     end
