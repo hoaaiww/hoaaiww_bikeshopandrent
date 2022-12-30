@@ -1,11 +1,13 @@
 ESX = nil
-local rentedBike = false
+local rentedBike, isDead, listCreated = false, false, false
+
 local timer = {
     countDown = 0,
     hours     = 0,
     minutes   = 0,
     seconds   = 0
 }
+
 colorCodes = {
     black  = { r = 0,   g = 0,   b = 0   },
     white  = { r = 255, g = 255, b = 255 },
@@ -17,59 +19,54 @@ colorCodes = {
 
 Citizen.CreateThread(function()
     while ESX == nil do
-	TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) 
-        Wait(0)
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) 
+       	Wait(0)
     end
 end)
 
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(playerData)
-    for k,v in pairs(Config.Bicycles) do
-        SendNUIMessage({ 
-            type = 'setList',
-            currency  = Config.Currency,
-            CP        = Config.CurrencyPlacement,
-            bikeId    = k,
-            bikeName  = v.name,
-            rentPrice = v.rentPrice,
-            buyPrice  = v.buyPrice,
-            bikePrice = v.buyPrice
-        })
-    end
+AddEventHandler('playerSpawned', function(spawn) 
+    isDead = false 
+end)
+
+AddEventHandler('esx:onPlayerDeath', function(data)
+    SendNUIMessage({ type = 'closeUI' })
+    isDead = true
 end)
 
 Citizen.CreateThread(function()
     while true do
         local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
 
-        if not rentedBike then
-            for k,v in pairs(Config.RentPlaces) do
-                for i = 1, #v.Rental, 1 do
-                    local distance = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, v.Rental[i].x, v.Rental[i].y, v.Rental[i].z)
+        if not isDead then
+            if not rentedBike then
+                for k,v in pairs(Config.RentPlaces) do
+                    for i = 1, #v.Rental, 1 do
+                        local distance = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, v.Rental[i].x, v.Rental[i].y, v.Rental[i].z)
 
-                    if distance < Config.BlipAndMarker.markerDistance then
-                        DrawMarker(Config.BlipAndMarker.markerType, v.Rental[i].x, v.Rental[i].y, v.Rental[i].z, 0, 0, 0, 0, 0, 0, Config.BlipAndMarker.markerSize.x, Config.BlipAndMarker.markerSize.y, Config.BlipAndMarker.markerSize.z, Config.BlipAndMarker.markerColour.r, Config.BlipAndMarker.markerColour.g, Config.BlipAndMarker.markerColour.b, Config.BlipAndMarker.markerColour.a, Config.BlipAndMarker.markerBounce, Config.BlipAndMarker.markerFacing, 0, Config.BlipAndMarker.markerRotate)
-                        
-                        if distance < 1.0 then
-                            ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to ~b~rent~s~ a ~y~Bicycle~s~')
+                        if distance < Config.BlipAndMarker.markerDistance then
+                            DrawMarker(Config.BlipAndMarker.markerType, v.Rental[i].x, v.Rental[i].y, v.Rental[i].z, 0, 0, 0, 0, 0, 0, Config.BlipAndMarker.markerSize.x, Config.BlipAndMarker.markerSize.y, Config.BlipAndMarker.markerSize.z, Config.BlipAndMarker.markerColour.r, Config.BlipAndMarker.markerColour.g, Config.BlipAndMarker.markerColour.b, Config.BlipAndMarker.markerColour.a, Config.BlipAndMarker.markerBounce, Config.BlipAndMarker.markerFacing, 0, Config.BlipAndMarker.markerRotate)
                             
-                            if IsControlJustPressed(0, 38) then
-                                openMenu(false)
-                            end			
+                            if distance < 1.0 then
+                                ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to ~b~rent~s~ a ~y~Bicycle~s~')
+                                
+                                if IsControlJustPressed(0, 38) then
+                                    openMenu(false)
+                                end			
+                            end
                         end
                     end
                 end
             end
-        end
 
-        local shopDistance = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Config.BicycleShop.x, Config.BicycleShop.y, Config.BicycleShop.z)
+            local shopDistance = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Config.BicycleShop.x, Config.BicycleShop.y, Config.BicycleShop.z)
 
-        if shopDistance < 1.5 then
-            ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to ~b~visit~s~ the ~y~Bicycle Shop~s~')
-            
-            if IsControlJustPressed(0, 38) then
-                openMenu(true)
-            end			
+            if shopDistance < 1.5 then
+                ESX.ShowHelpNotification('Press ~INPUT_CONTEXT~ to ~b~visit~s~ the ~y~Bicycle Shop~s~')
+                
+                if IsControlJustPressed(0, 38) then
+                    openMenu(true)
+                end			
+            end
         end
         Wait(0)
     end
@@ -78,6 +75,7 @@ end)
 RegisterNetEvent('hoaaiww_bikeshopandrent:rentBike')
 AddEventHandler('hoaaiww_bikeshopandrent:rentBike', function(bicycleType, color, rentTime)
     SendNUIMessage({ type = 'closeUI' })
+
     local player = GetPlayerPed(-1)
     local playerCoords = GetEntityCoords(player, false)
     local playerHeading = GetEntityHeading(player, false)
@@ -177,7 +175,7 @@ end)
 Citizen.CreateThread(function()
     while true do
         Wait(0)
-        if rentedBike then
+        if rentedBike and not isDead then
             DrawText2D(0.825, 1.455, 1.0,1.0,0.4, "The time left from the rented bike: ~b~" .. 
             ((timer.hours > 1 and timer.hours .. ' hours ') or (timer.hours == 1 and timer.hours .. ' hour ') or '') .. 
             ((((timer.minutes == 0 and timer.hours >= 1) or (timer.minutes == 1)) and timer.minutes .. ' minute ') or (timer.minutes > 1 and timer.minutes .. ' minutes ') or '') ..
@@ -195,10 +193,26 @@ Citizen.CreateThread(function()
     end
 end)
 
-function openMenu(isShop)
+function openMenu(isShop) 
+    if not listCreated then   -- On the fist UI open, create the list
+        for k,v in pairs(Config.Bicycles) do
+            SendNUIMessage({ 
+                type = 'setList',
+                currency  = Config.Currency,
+                CP        = Config.CurrencyPlacement,
+                bikeId    = k,
+                bikeName  = v.name,
+                rentPrice = v.rentPrice,
+                buyPrice  = v.buyPrice,
+                bikePrice = v.buyPrice
+            })
+        end
+        listCreated = true
+    end
+
     if isShop then
         SendNUIMessage({ type = 'openShopMenu' })
-    else 
+    else
         SendNUIMessage({ type = 'openRentMenu' })
     end
     SetNuiFocus(true, true)
