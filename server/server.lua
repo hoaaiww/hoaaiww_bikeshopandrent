@@ -1,4 +1,4 @@
-ESX 					    = nil
+ESX 			    = nil
 local rentalPrice, bikeName = nil, nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
