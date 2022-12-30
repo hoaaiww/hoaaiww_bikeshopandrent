@@ -1,8 +1,7 @@
 <h1 align='center'>Bike Shop and Rental</a></h1>
 
-#### FIX UPDATE 2.1
-* Fixed major UI issues
-* Added 'isDead' events
+#### HOTFIX UPDATE 2.2
+* Multiple NPCs fix
 
 #### UPDATE 2.0
 * Fully updated and fixed the whole script
