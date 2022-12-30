@@ -2,7 +2,7 @@ function closeMenu() {
     $(".mainbox").fadeOut('slow');
     $('#containments_rent').fadeOut();
     $('#containments_shop').fadeOut();
-    $.post('https://hoaaiww_bikerental/closeUI', JSON.stringify({}));
+    $.post('https://hoaaiww_bikeshopandrent/closeUI', JSON.stringify({}));
 }
 
 function changeNum(itemID, type) {
@@ -135,7 +135,7 @@ function rentBike(bike) {
         color = $("input[name="+bike+"_rent_color]:checked").val();
     }
 
-    $.post('https://hoaaiww_bikerental/ManageBike', JSON.stringify({ bike: bike, color: color, rentTime: rentTime, renting: true }));
+    $.post('https://hoaaiww_bikeshopandrent/ManageBike', JSON.stringify({ bike: bike, color: color, rentTime: rentTime, renting: true }));
     $('#'+bike).val(1);
 }
 
@@ -146,7 +146,7 @@ function buyBike(bike) {
         color = $("input[name="+bike+"_buy_color]:checked").val();
     }
 
-    $.post('https://hoaaiww_bikerental/ManageBike', JSON.stringify({ bike: bike, color: color, renting: false }));
+    $.post('https://hoaaiww_bikeshopandrent/ManageBike', JSON.stringify({ bike: bike, color: color, renting: false }));
 }
 
 function setInputFilter(textbox, inputFilter, errMsg) {
