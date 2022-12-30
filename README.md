@@ -1,5 +1,9 @@
 <h1 align='center'>Bike Shop and Rental</a></h1>
 
+#### FIX UPDATE 2.1
+* Fixed minor UI issues
+* Added 'isDead' events
+
 #### UPDATE 2.0
 * Fully updated and fixed the whole script
 * Added bicycle shop
