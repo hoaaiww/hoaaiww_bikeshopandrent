@@ -106,4 +106,4 @@ Config.BlipAndMarker = {
 }
 
 Config.checkForUpdates  = true -- Check for updates? /!\ Recommended
-Config.Version          = '2.1' -- Dont edit!
+Config.Version          = '2.2' -- Dont edit!
