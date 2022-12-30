@@ -256,7 +256,7 @@ Citizen.CreateThread(function()
 	end
 
     --shop
-    npcPed = CreatePed(4, Config.NPC.hash, Config.BicycleShop.x, Config.BicycleShop.y, Config.BicycleShop.z - 1, Config.BicycleShop.h, true, true)
+    npcPed = CreatePed(4, Config.NPC.hash, Config.BicycleShop.x, Config.BicycleShop.y, Config.BicycleShop.z - 1, Config.BicycleShop.h, false, true)
     FreezeEntityPosition(npcPed, true)
     SetEntityInvincible(npcPed, true)
     SetBlockingOfNonTemporaryEvents(npcPed, true)
