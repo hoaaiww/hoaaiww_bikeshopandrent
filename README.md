@@ -1,5 +1,7 @@
 <h1 align='center'>Bike Shop and Rental</a></h1>
 
+### [DOWNLOAD LATEST RELEASE](https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases/latest/download/package.zip)
+
 #### HOTFIX UPDATE 2.2
 * Multiple NPCs fix
 
