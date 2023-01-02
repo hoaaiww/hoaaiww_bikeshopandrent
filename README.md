@@ -33,6 +33,6 @@
 
 ## Dependencies
 
-* [oxmysql](https://github.com/overextended/oxmysql) - If you use MySQL_Async then change '@oxmysql' to '@MySQL_Async' in `fx_manifest.lua`
+* [oxmysql](https://github.com/overextended/oxmysql) - If you use mysql-async instead oxmysql then change '@oxmysql' to '@mysql-async' in `fx_manifest.lua`
 * [ESX](https://github.com/esx-framework/esx-legacy.git)
 * [esx_vehicleshop](https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_vehicleshop)
