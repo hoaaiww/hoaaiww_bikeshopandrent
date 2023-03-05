@@ -3,7 +3,7 @@
 ### [DOWNLOAD LATEST RELEASE](https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases/latest)
 
 #### UPDATE 2.3
-* Simplifies and updates
+* simplifications and updates
 * Some optimalizations
 
 #### Working on
