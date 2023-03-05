@@ -7,7 +7,7 @@
 * Some optimalizations
 
 #### Working on
-* *nothing yet*
+* QBCore complatibility
 
 ## How it looks like?
 *You can check it [here](https://forum.cfx.re/t/release-arp-bike-rental-advanced-fivem-bike-rental/4767386)*
