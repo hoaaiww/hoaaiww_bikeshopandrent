@@ -2,13 +2,9 @@
 
 ### [DOWNLOAD LATEST RELEASE](https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases/latest)
 
-#### HOTFIX UPDATE 2.2
-* Multiple NPCs fix
-
-#### UPDATE 2.0
-* Fully updated and fixed the whole script
-* Added bicycle shop
-* Added a designed UI for the bicycle shop and rent
+#### UPDATE 2.3
+* Simplifies and updates
+* Some optimalizations
 
 #### Working on
 * *nothing yet*
@@ -23,7 +19,7 @@
 
 * Git [hoaaiww_bikeshopandrent](https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases)
 * Extract ```hoaaiww_bikeshopandrent-main.rar```
-* Remove ```-main``` from ```hoaaiww_bikeshopandrent```
+* Remove  the ```-main``` or whatever is after ```hoaaiww_bikeshopandrent```
 * Copy and paste ```hoaaiww_bikeshopandrent``` folder to ```resources```
 * Add ```ensure hoaaiww_bikeshopandrent``` to your ```server.cfg``` file
 
@@ -33,6 +29,5 @@
 
 ## Dependencies
 
-* [oxmysql](https://github.com/overextended/oxmysql) - If you use mysql-async instead oxmysql then change '@oxmysql' to '@mysql-async' in `fx_manifest.lua`
+* [oxmysql](https://github.com/overextended/oxmysql) - If you are using `mysql-async` instead of `oxmysql` then change ```'@oxmysql'``` to ```'@mysql-async'``` in `fx_manifest.lua`
 * [ESX](https://github.com/esx-framework/esx-legacy.git)
-* [esx_vehicleshop](https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_vehicleshop)
