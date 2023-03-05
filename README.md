@@ -2,6 +2,9 @@
 
 ### [DOWNLOAD LATEST RELEASE](https://github.com/hoaaiww/hoaaiww_bikeshopandrent/releases/latest)
 
+#### UPDATE 2.4 HOTFIX
+* added locale.lua
+
 #### UPDATE 2.3
 * simplifications and updates
 * Some optimalizations
