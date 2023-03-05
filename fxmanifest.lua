@@ -5,7 +5,7 @@ lua54 'yes'
 name 'ARP Bicycle rental and shop'
 description 'Rent or buy a bike to make your way faster to you location or just for fun!!'
 author 'hoaaiww'
-version '2.3'
+version '2.4'
 
 shared_scripts {
   '@es_extended/imports.lua',
